@@ -1,0 +1,268 @@
+1.Write a C program to input electricity unit charge and calculate the total electricity bill according to the give
+
+For first 50 Units Rs.0.50/unit
+
+For next 100 Units Rs.0.75/unit
+
+For next 100 Units Rs.1.20/unit
+
+For unit above 250 Rs.1.50/unit
+
+An additional surcharge of 20% is added to the bill.
+
+Program
+
+#include <stdio.h>
+
+int main() {
+    float units, bill;
+
+    printf("Enter the electricity unit charge: ");
+    scanf("%f", &units);
+
+    if(units <= 50) {
+        bill = units * 0.50;
+    } else if(units <= 100) {
+        bill = 25 + (units - 50) * 0.75;
+    } else if(units <= 200) {
+        bill = 100 + (units - 100) * 1.20;
+    } else {
+        bill = 220 + (units - 250) * 1.50;
+    }
+
+    bill = bill + (bill * 0.20);  // adding 20% surcharge
+
+    printf("Total electricity bill = Rs. %.2f", bill);
+
+    return 0;
+}
+
+2.Write a C program to input basic Salary of an employee and calculate its gross salary according to following:
+
+Basic Salary <= 10000: HRA = 20%, DA=80% Basic Salary 20000: HRA = 25%, DA=90% <= Basic Salary> 20000: HRA = 30%, DA=95%
+
+Program
+
+#include <stdio.h>
+
+int main()
+{
+    float basic, gross, da, hra;
+
+    /* Input basic salary of employee */
+    printf("Enter basic salary of an employee: ");
+    scanf("%f", &basic);
+
+
+    /* Calculate D.A and H.R.A according to specified conditions */
+    if(basic <= 10000)
+    {
+        da  = basic * 0.8;
+        hra = basic * 0.2;
+    }
+    else if(basic <= 20000)
+    {
+        da  = basic * 0.9;
+        hra = basic * 0.25;
+    }
+    else
+    {
+        da  = basic * 0.95;
+        hra = basic * 0.3;
+    }
+
+    /* Calculate gross salary */
+    gross = basic + hra + da;
+
+    printf("GROSS SALARY OF EMPLOYEE = %.2f", gross);
+
+    return 0;
+}
+
+3.Check whether a triangle is Equilateral or Isosceles or Scalene based on length of three sides
+
+Program
+
+#include <stdio.h>
+
+int main() {
+    float a, b, c;
+
+    printf("Enter length of side a: ");
+    scanf("%f", &a);
+    printf("Enter length of side b: ");
+    scanf("%f", &b);
+    printf("Enter length of side c: ");
+    scanf("%f", &c);
+
+    if (a == b && b == c) {
+        printf("The triangle is equilateral.\n");
+    } else if (a == b || b == c || a == c) {
+        printf("The triangle is isosceles.\n");
+    } else {
+        printf("The triangle is scalene.\n");
+    }
+
+    return 0;
+}
+
+4.Input all angles of a Triangle and check whether it is Valid or Not Valid
+
+Program
+
+#include <stdio.h>
+
+int main()
+{
+    int angle1, angle2, angle3, sum;
+
+    /* Input all three angles of triangle */
+    printf("Enter three angles of triangle: \n");
+    scanf("%d%d%d", &angle1, &angle2, &angle3);
+
+    /* Calculate sum of angles */
+    sum = angle1 + angle2 + angle3; 
+
+    /*
+     * If sum of angles is 180 and
+     * angle1, angle2, angle3 is not 0 then
+     * triangle is valid.
+     */
+    if(sum == 180 && angle1 > 0 && angle2 > 0 && angle3 > 0) 
+    {
+        printf("Triangle is valid.");
+    }
+    else
+    {
+        printf("Triangle is not valid.");
+    }
+
+    return 0;
+}
+
+5.Check whether the given character is a Vowel or Consonant
+
+Program
+
+#include <stdio.h>
+
+int main()
+{
+    int c = 0;
+    char s[100];
+    printf("Enter the String:");
+    scanf("%s", s);
+    while (s[c] != '\0') {
+    if (s[c] == 'a' || s[c] == 'A' || s[c] == 'e' || s[c] == 'E' || s[c] == 'i' || s[c] == 'I' || s[c] =='o' || s[c]=='O' || s[c] == 'u' || s[c] == 'U')
+      printf("The given string is vowel");
+      else{
+        printf("The given string is cons");
+    }
+    break;
+  }
+  return 0;
+}
+
+
+
+
+6.Generate all pairs of amicable numbers within the given range.
+
+Program
+
+#include<stdio.h>
+void amic(int x,int y){
+  int sum1=0,sum2=0;
+  for(int i=1;i<x;i++)
+  {
+    if(x%i==0)
+     sum1=sum1+i;
+  }
+  for(int i=1;i<y;i++)
+  {
+    if(y%i==0)
+     sum2=sum2+i;
+  }
+  if((sum1==y) && (sum2==x))
+  {
+    printf("%d %d",x,y);
+    printf("\n");
+  }
+  else 
+  return ;
+}
+int main()
+{
+  int a,b;
+  scanf("%d %d",&a,&b);
+   for(int i=a;i<=b;i++){
+   for(int j=i+1;j<=b;j++)
+   {
+     amic(i,j);
+   }
+ }
+}
+
+8. Write a C program to input amount from user and print minimum number of notes (Rs. 500,100,50,20,10,5.2.1) required for the given amount in c programming.
+
+Program
+
+#include<stdio.h>
+int main()
+{
+    int a[8]={1,2,5,10,20,50,100,500},b[8]={0};
+    int amnt;
+    scanf("%d",&amnt);
+    for(int i=7;i>=0;i--)
+    {
+        if(amnt<a[i])
+        continue;
+        
+        else
+        {
+            b[i]=amnt/a[i];
+            amnt = amnt - b[i]*a[i];
+        }
+    }
+    for(int i=0;i<8;i++)
+    {
+        printf("%d %d notes\n",b[i],a[i]);
+    }
+}
+
+9. Betrothed Number Generation in given Range
+
+Program
+
+#include<stdio.h>
+void bet(int x,int y){
+  int sum1=0,sum2=0;
+  for(int i=1;i<x;i++)
+  {
+    if(x%i==0)
+     sum1=sum1+i;
+  }
+  for(int i=1;i<y;i++)
+  {
+    if(y%i==0)
+     sum2=sum2+i;
+  }
+  if((sum1==y+1) && (sum2==x+1))
+  {
+    printf("%d %d",x,y);
+    printf("\n");
+  }
+  else 
+  return ;
+}
+int main()
+{
+  int a,b;
+  scanf("%d %d",&a,&b);
+   for(int i=a;i<=b;i++){
+   for(int j=i+1;j<=b;j++)
+   {
+     bet(i,j);
+   }
+ }
+}
