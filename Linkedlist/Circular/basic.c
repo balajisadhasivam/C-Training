@@ -20,23 +20,11 @@ void insert(int n){  //20
 }
 void display(){
     NODE* tptr;
-    for(tptr=start;tptr!=NULL;tptr=tptr->next){
+    for(tptr=start;tptr->next!=start;tptr=tptr->next){
         printf("%d ",tptr->data);
     }
+    printf("%d",tptr->data);
 }
-// void delete(int d){
-//     NODE *tptr,*prev;
-//     for(tptr=start;tptr!=NULL&&tptr->data!=d;prev=tptr,tptr=tptr->next);
-//     if(tptr==start)
-//         start=start->next;
-//     else
-//     prev->next=tptr->next;
-// }
-// void findMid(){
-//     NODE* slow,*fast;
-//     for(slow=start,fast=start;fast->next!=NULL;slow=slow->next,fast=fast->next->next);
-//     printf("\n mid=%d",slow->data);
-// }
 int main()
 {
     int n;
@@ -47,11 +35,5 @@ int main()
        insert(n);
     }
     display();
-    // int data;
-    // printf("Enter the data to delete:\n");
-    // scanf("%d",&data);
-    // delete(data);
-    //findMid();
-    
 }
 
